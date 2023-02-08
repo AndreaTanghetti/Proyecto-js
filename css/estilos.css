@@ -20,7 +20,6 @@ main{
     grid-template-rows:100%;
     grid-template-areas: 
     "texto img";
-    /* "texto img"; */
 }
 .texto{
     grid-area: texto;
