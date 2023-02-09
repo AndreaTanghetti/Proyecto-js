@@ -20,7 +20,7 @@ alert("Copia el siguiente código y pégalo cuando vayas a pagar. Código: PRIME
 
 
 const carrito = [];
-let precioTotal;
+let precioTotal = ""
 let eleccion = "";
 
 
@@ -47,9 +47,14 @@ while (eleccion !== "salir") {
             eleccion = "salir";
             precioTotal = carrito.reduce((acumulador, servicioSeleccionado) => acumulador + servicioSeleccionado.precio, 0);
             alert("Servicios elegidos:\n" + carrito.map((servicio, index) => index + 1 + ") " + servicio.nombre + " $" + servicio.precio).join("\n") + "\n" + "Total a pagar $" + precioTotal);
-            let descuento = prompt("¿Tienes algún voucher? (si/no)").toLowerCase();
+            let descuento = prompt("¿Tenes algún voucher? (si/no)").toLowerCase();
+            
             if (descuento === "si") {
                 descuento = prompt("Por favor ingrese el código del voucher").toUpperCase();
+                while (descuento !== "PRIMERAVEZ"){
+                    alert("El código es incorrecto")
+                    descuento = prompt ("Por favor ingrese el código del voucher").toUpperCase();
+                }
                 if (descuento === "PRIMERAVEZ") {
                     let precioDescuento = precioTotal - (precioTotal * 0.20)
                     alert("El total a pagar con el descuento es: $" + precioDescuento)
