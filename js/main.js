@@ -35,13 +35,19 @@ while (eleccion !== "salir") {
 
         alert(servicioSeleccionado.nombre + " $ " + servicioSeleccionado.precio + ". Se agrego al carrito");
 
-        eleccion = prompt("¿Desea elegir otro servicio? \n (si/no)");
+        eleccion = prompt("¿Desea elegir otro servicio? \n (si/no)").toLowerCase();
+
+        while (eleccion !== "si" && eleccion !== "no") {
+            alert("Por favor ingrese 'si' para continuar o 'no' para salir ");
+            eleccion = prompt("¿Desea elegir otro servicio? \n (si/no)").toLowerCase();
+        } 
+
 
         if (eleccion === "no") {
             eleccion = "salir";
             precioTotal = carrito.reduce((acumulador, servicioSeleccionado) => acumulador + servicioSeleccionado.precio, 0);
             alert("Servicios elegidos:\n" + carrito.map((servicio, index) => index + 1 + ") " + servicio.nombre + " $" + servicio.precio).join("\n") + "\n" + "Total a pagar $" + precioTotal);
-            let descuento = prompt("¿Tienes algún voucher? (si/no)");
+            let descuento = prompt("¿Tienes algún voucher? (si/no)").toLowerCase();
             if (descuento === "si") {
                 descuento = prompt("Por favor ingrese el código del voucher").toUpperCase();
                 if (descuento === "PRIMERAVEZ") {
