@@ -40,7 +40,7 @@ while (eleccion !== "salir") {
         while (eleccion !== "si" && eleccion !== "no") {
             alert("Por favor ingrese 'si' para continuar o 'no' para salir ");
             eleccion = prompt("¿Desea elegir otro servicio? \n (si/no)").toLowerCase();
-        } 
+        }
 
 
         if (eleccion === "no") {
@@ -48,12 +48,12 @@ while (eleccion !== "salir") {
             precioTotal = carrito.reduce((acumulador, servicioSeleccionado) => acumulador + servicioSeleccionado.precio, 0);
             alert("Servicios elegidos:\n" + carrito.map((servicio, index) => index + 1 + ") " + servicio.nombre + " $" + servicio.precio).join("\n") + "\n" + "Total a pagar $" + precioTotal);
             let descuento = prompt("¿Tenes algún voucher? (si/no)").toLowerCase();
-            
+
             if (descuento === "si") {
                 descuento = prompt("Por favor ingrese el código del voucher").toUpperCase();
-                while (descuento !== "PRIMERAVEZ"){
+                while (descuento !== "PRIMERAVEZ") {
                     alert("El código es incorrecto")
-                    descuento = prompt ("Por favor ingrese el código del voucher").toUpperCase();
+                    descuento = prompt("Por favor ingrese el código del voucher").toUpperCase();
                 }
                 if (descuento === "PRIMERAVEZ") {
                     let precioDescuento = precioTotal - (precioTotal * 0.20)
@@ -61,16 +61,17 @@ while (eleccion !== "salir") {
                 }
             }
         }
-    }
-}
-class Cliente {
-    constructor(nombre, telefono) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-    }
-}
-const nombre = prompt("A nombre de quien reservamos el turno?")
-const telefono = prompt("Celular de contacto? ")
-const cliente1 = new Cliente(nombre, telefono)
+        class Cliente {
+            constructor(nombre, telefono) {
+                this.nombre = nombre;
+                this.telefono = telefono;
+            }
+        }
+        
+        const nombre = prompt("A nombre de quien reservamos el turno?")
+        const telefono = prompt("Celular de contacto? ")
+        const cliente1 = new Cliente(nombre, telefono)
 
-alert(cliente1.nombre + ", nos pondremos en contacto con vos al numero " + cliente1.telefono + " para definir fecha, horario del turno y metodo de pago.\n Gracias por elegirnos❤")
+        alert(cliente1.nombre + ", nos pondremos en contacto con vos al numero " + cliente1.telefono + " para definir fecha, horario del turno y metodo de pago.\n Gracias por elegirnos❤")
+    }
+}
