@@ -4,7 +4,12 @@ class Servicio {
         this.precio = precio;
     }
 }
-
+class Cliente {
+    constructor(nombre, telefono) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+}
 
 const opciones = [
     { nombre: "Esmaltado semipermanente", precio: 1000 },
@@ -26,7 +31,7 @@ let eleccion = "";
 
 while (eleccion !== "salir") {
     eleccion = prompt(
-        "Te contamos cuáles son los servicios que tenemos para vos: \n" + opciones.map((servicio, index) => index + 1 + ")" + servicio.nombre).join("\n") + "\n ¿Cuál servicio te interesa?\n (Escriba el numero de la opcion elegida o escriba 'salir' para salir)"
+        "Te contamos cuáles son los servicios que tenemos para vos: \n" + opciones.map((servicio, index) => index + 1 + ")" + servicio.nombre).join("\n") + "\n ¿Cuál servicio te interesa?\n (Escriba el número de la opción elegida o escriba 'salir' para salir)"
     );
 
     if (eleccion >= 1 && eleccion <= opciones.length) {
@@ -38,7 +43,7 @@ while (eleccion !== "salir") {
         eleccion = prompt("¿Desea elegir otro servicio? \n (si/no)").toLowerCase();
 
         while (eleccion !== "si" && eleccion !== "no") {
-            alert("Por favor ingrese 'si' para continuar o 'no' para salir ");
+            alert("Por favor ingrese 'si' para continuar o 'no' para finalizar ");
             eleccion = prompt("¿Desea elegir otro servicio? \n (si/no)").toLowerCase();
         }
 
@@ -47,31 +52,31 @@ while (eleccion !== "salir") {
             eleccion = "salir";
             precioTotal = carrito.reduce((acumulador, servicioSeleccionado) => acumulador + servicioSeleccionado.precio, 0);
             alert("Servicios elegidos:\n" + carrito.map((servicio, index) => index + 1 + ") " + servicio.nombre + " $" + servicio.precio).join("\n") + "\n" + "Total a pagar $" + precioTotal);
-            let descuento = prompt("¿Tenes algún voucher? (si/no)").toLowerCase();
+            let descuento = prompt("¿Tenés algún voucher? (si/no)").toLowerCase();
+
+            while (descuento !== "si" && descuento !== "no") {
+                alert("Por favor ingrese 'si' o 'no'  ");
+                descuento = prompt("¿Tenés algún voucher? (si/no)").toLowerCase();
+            }
 
             if (descuento === "si") {
                 descuento = prompt("Por favor ingrese el código del voucher").toUpperCase();
                 while (descuento !== "PRIMERAVEZ") {
-                    alert("El código es incorrecto")
+                    alert("El código no es valido")
                     descuento = prompt("Por favor ingrese el código del voucher").toUpperCase();
                 }
                 if (descuento === "PRIMERAVEZ") {
                     let precioDescuento = precioTotal - (precioTotal * 0.20)
                     alert("El total a pagar con el descuento es: $" + precioDescuento)
+
                 }
             }
-        }
-        class Cliente {
-            constructor(nombre, telefono) {
-                this.nombre = nombre;
-                this.telefono = telefono;
-            }
-        }
-        
-        const nombre = prompt("A nombre de quien reservamos el turno?")
-        const telefono = prompt("Celular de contacto? ")
-        const cliente1 = new Cliente(nombre, telefono)
+            const nombre = prompt("A nombre de quien reservamos el turno?")
+            const telefono = prompt("Celular de contacto? ")
+            const cliente1 = new Cliente(nombre, telefono)
 
-        alert(cliente1.nombre + ", nos pondremos en contacto con vos al numero " + cliente1.telefono + " para definir fecha, horario del turno y metodo de pago.\n Gracias por elegirnos❤")
+            alert(cliente1.nombre + ", nos pondremos en contacto con vos al número " + cliente1.telefono + " para definir fecha, horario del turno y método de pago.\n Gracias por elegirnos❤")
+
+        }
     }
 }
